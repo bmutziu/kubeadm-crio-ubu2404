@@ -1,0 +1,30 @@
+apiServer:
+  certSANs:
+    - "10.100.0.1"
+    - "192.168.0.19"
+    - "13.49.225.139"
+    - "ec2-13-49-225-139.eu-north-1.compute.amazonaws.com"
+    - "ip-192-168-0-19"
+    - "kubernetes"
+    - "kubernetes.default"
+    - "kubernetes.default.svc"
+    - "kubernetes.default.svc.cluster.local"
+  extraArgs:
+    authorization-mode: Node,RBAC
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta3
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns: {}
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.k8s.io
+kind: ClusterConfiguration
+kubernetesVersion: v1.28.2
+networking:
+  dnsDomain: cluster.local
+  podSubnet: 10.50.0.0/16
+  serviceSubnet: 10.100.0.0/16
+scheduler: {}
